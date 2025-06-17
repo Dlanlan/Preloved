@@ -1,3 +1,13 @@
+Account user (jual/beli)
+username: lan
+password: lan
+
+atau buat akun sendiri melalui halaman register
+
+Account admin (mengelola konten)
+username: admin2
+password: admin123
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
