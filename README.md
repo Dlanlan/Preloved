@@ -1,3 +1,5 @@
+Jalankan composer install terlebih dahulu, kemudian sesuaikan isi .env dengan preferensi yang kamu inginkan
+
 Account user (jual/beli)
 username: lan
 password: lan
