@@ -1,25 +1,32 @@
-/* Warna dan gaya khusus */
+/* =============================
+   Global Styles
+============================= */
 body {
-    background-color: #f2efe6;
-    color: #2e2e2e;
-    font-family: 'Segoe UI', sans-serif;
+  background-color: #f2efe6;
+  color: #2e2e2e;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Navbar */
+/* =============================
+ Navbar
+============================= */
 .navbar {
-    background-color: #5a3601;
+  background-color: #5a3601;
 }
+
 .navbar a {
-    color: #ffffff !important;
+  color: #ffffff !important;
 }
+
 .navbar a:hover {
-    color: #f3d250 !important;
+  color: #f3d250 !important;
 }
 
-
-/* Hero Title */
+/* =============================
+ Hero Section
+============================= */
 .hero-title {
-    color: #5a3601;
+  color: #5a3601;
 }
 
 .hero-section p {
@@ -27,87 +34,109 @@ body {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-
-/* Tombol khusus */
+/* =============================
+ Buttons
+============================= */
 .btn-custom {
-    background-color: #c66b3d;
-    color: white;
+  background-color: #c66b3d;
+  color: white;
 }
+
 .btn-custom:hover {
-    background-color: #a4502b;
-    color: white;
+  background-color: #a4502b;
+  color: white;
 }
 
-    .btn-outline-secondary {
-        color: #5a3601;
-        border-color: #5a3601;
-        transition: all 0.3s ease;
-    }
+.btn-outline-secondary {
+  color: #5a3601;
+  border-color: #5a3601;
+  transition: all 0.3s ease;
+}
 
-    .btn-outline-secondary:hover,
-    .btn-outline-secondary:focus,
-    .btn-outline-secondary:active {
-        background-color: #5a3601;
-        color: white;
-        border-color: #5a3601;
-    }
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active {
+  background-color: #5a3601;
+  color: white;
+  border-color: #5a3601;
+}
 
-/* Produk Card */
+/* =============================
+ Produk Card
+============================= */
 .product-card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(90, 54, 1, 0.1);
-    transition: transform 0.2s ease;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(90, 54, 1, 0.1);
+  transition: transform 0.2s ease;
 }
+
 .product-card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
-/* Badge */
-.badge-highlight {
-    background-color: #f3d250;
-    color: #5a3601;
-    font-weight: 600;
+/* =============================
+ Badges
+============================= */
+.badge-highlight,
+.badge.bg-warning.text-dark {
+  background-color: #f3d250 !important;
+  color: #5a3601 !important;
+  font-weight: 600;
 }
 
-/* Footer */
+/* =============================
+ Footer
+============================= */
 footer {
-    background-color: #5a3601;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
+  background-color: #5a3601;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.875rem;
 }
 
-
+/* =============================
+   Custom Dropdown (Updated)
+============================= */
 .custom-dropdown {
-  background-color: #4b2e00; /* warna coklat gelap */
-  border-radius: 8px;
+  background-color: #5a3601;
+  border-radius: 0.5rem;
   padding: 0.5rem 0;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .custom-dropdown .dropdown-item {
   color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
 }
 
-.custom-dropdown .dropdown-item:hover {
-  background-color: #6b3e00; /* sedikit lebih terang saat hover */
+.custom-dropdown .dropdown-item:hover,
+.custom-dropdown .dropdown-item:focus {
+  background-color: #774d1a;
+  color: #f3d250;
 }
 
 .custom-dropdown .dropdown-divider {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 
-/* for mobile area */
 
+
+/* =============================
+ Kategori Floating (Mobile)
+============================= */
 @media (max-width: 576px) {
   .kategori-floating button {
-    width: 48px !important;
-    height: 48px !important;
-    font-size: 1.2rem;
+      width: 48px !important;
+      height: 48px !important;
+      font-size: 1.2rem;
   }
 
   .kategori-floating small {
-    font-size: 0.75rem;
+      font-size: 0.75rem;
   }
 }

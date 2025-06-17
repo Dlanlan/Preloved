@@ -1,0 +1,29 @@
+body {
+    background: #f4f4f4;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .sidebar {
+    background-color: #5C3900;
+    min-height: 100vh;
+    padding-top: 1rem;
+  }
+  
+  .sidebar .nav-link {
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    display: block;
+  }
+  
+  .sidebar .nav-link:hover {
+    background-color: #442700;
+  }
+  
+  .card-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+  }
+  

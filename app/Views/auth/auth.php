@@ -27,20 +27,20 @@
                         <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
                     <?php endif; ?>
 
-                    <form action="<?= base_url('/login') ?>" method="post">
+                    <form action="<?= base_url('/login') ?>" method="post" autocomplete="off">
                         <?= csrf_field() ?>
                         <input type="hidden" name="form_mode" value="login">
-                        <input type="text" name="username" class="form-control" placeholder="Username" required
+
+                        <input type="text" name="username" class="form-control mb-2" placeholder="Username" required
                             value="<?= old('form_mode') === 'login' ? old('username') : '' ?>">
-                        <input type="password" name="password" class="form-control" placeholder="Password" required>
-                        <select name="role" class="form-select" required>
-                            <option value="">Login sebagai</option>
-                            <option value="penjual" <?= old('role') === 'penjual' ? 'selected' : '' ?>>Penjual</option>
-                            <option value="pembeli" <?= old('role') === 'pembeli' ? 'selected' : '' ?>>Pembeli</option>
-                        </select>
-                        <button type="submit" class="btn btn-custom">Login</button>
-                        <p class="text-center">Belum punya akun? <a href="#" onclick="toggleForm(true)">Daftar di
-                                sini</a></p>
+
+                        <input type="password" name="password" class="form-control mb-2" placeholder="Password"
+                            required>
+
+                        <button type="submit" class="btn btn-custom w-100">Login</button>
+                        <p class="text-center mt-3">
+                            Belum punya akun? <a href="#" onclick="toggleForm(true); return false;">Daftar di sini</a>
+                        </p>
                     </form>
                 </div>
 
@@ -55,20 +55,20 @@
                         <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
                     <?php endif; ?>
 
-                    <form action="<?= base_url('/register') ?>" method="post">
+                    <form action="<?= base_url('/register') ?>" method="post" autocomplete="off">
                         <?= csrf_field() ?>
                         <input type="hidden" name="form_mode" value="register">
-                        <input type="text" name="username" class="form-control" placeholder="Username" required
+
+                        <input type="text" name="username" class="form-control mb-2" placeholder="Username" required
                             value="<?= old('form_mode') === 'register' ? old('username') : '' ?>">
-                        <input type="password" name="password" class="form-control" placeholder="Password" required>
-                        <select name="role" class="form-select" required>
-                            <option value="">Daftar sebagai</option>
-                            <option value="penjual" <?= old('role') === 'penjual' ? 'selected' : '' ?>>Penjual</option>
-                            <option value="pembeli" <?= old('role') === 'pembeli' ? 'selected' : '' ?>>Pembeli</option>
-                        </select>
-                        <button type="submit" class="btn btn-custom">Register</button>
-                        <p class="text-center">Sudah punya akun? <a href="#" onclick="toggleForm(false)">Login di
-                                sini</a></p>
+
+                        <input type="password" name="password" class="form-control mb-2" placeholder="Password"
+                            required>
+
+                        <button type="submit" class="btn btn-custom w-100">Register</button>
+                        <p class="text-center mt-3">
+                            Sudah punya akun? <a href="#" onclick="toggleForm(false); return false;">Login di sini</a>
+                        </p>
                     </form>
                 </div>
             </div>

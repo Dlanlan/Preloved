@@ -1,0 +1,27 @@
+/* checkout.css */
+
+.product-title {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: #5a3601;
+}
+
+.product-desc {
+    font-size: 1rem;
+    color: #555;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.btn-custom {
+    background-color: #c66b3d;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #a4502b;
+    color: white;
+}

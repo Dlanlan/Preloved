@@ -1,0 +1,22 @@
+h4.fw-semibold {
+    color: #5C3900;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+    font-weight: 500;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}

@@ -1,0 +1,27 @@
+body {
+    background-color: #F3EFE5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.btn-warning-custom {
+    background-color: #5C3900;
+    color: #fff;
+}
+
+.btn-warning-custom:hover {
+    background-color: #3b2400;
+}
+
+.card {
+    border: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #5C3900;
+    box-shadow: 0 0 0 0.2rem rgba(92, 57, 0, 0.25);
+}
+
+label.form-label {
+    font-weight: 500;
+}

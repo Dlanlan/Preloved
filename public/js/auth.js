@@ -4,14 +4,13 @@ function toggleForm(showRegister = false) {
   const slider = document.querySelector(".slider");
 
   if (isMobile) {
-    // mobile: tampilkan form register dengan slide ke bawah
     if (showRegister) {
       wrapper.classList.add("register-mode");
     } else {
       wrapper.classList.remove("register-mode");
     }
   } else {
-    // desktop: geser slider ke kiri/kanan
+    wrapper.classList.toggle("register-mode", showRegister);
     slider.style.transform = showRegister
       ? "translateX(-50%)"
       : "translateX(0)";
@@ -24,17 +23,14 @@ window.addEventListener("DOMContentLoaded", () => {
   const isMobile = window.innerWidth <= 768;
   const slider = document.querySelector(".slider");
 
-  // Set awal posisi slider desktop
   if (!isMobile && wrapper.classList.contains("register-mode")) {
     slider.style.transform = "translateX(-50%)";
   }
 
-  // Auto kembali ke login jika register sukses
   if (success) {
     setTimeout(() => {
-      if (isMobile) {
-        wrapper.classList.remove("register-mode");
-      } else {
+      wrapper.classList.remove("register-mode");
+      if (!isMobile) {
         slider.style.transform = "translateX(0)";
       }
     }, 2000);

@@ -8,7 +8,7 @@ class Auth extends BaseController
 {
     public function index()
     {
-        return view('auth/auth'); // satu view gabungan untuk login dan register
+        return view('auth/auth');
     }
 
     public function loginPost()
@@ -18,54 +18,58 @@ class Auth extends BaseController
 
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
-        $role = $this->request->getPost('role');
 
-        if (!$username || !$password || !in_array($role, ['penjual', 'pembeli'])) {
-            return redirect()->to('/auth')->withInput()->with('error', 'Semua field harus diisi dengan benar.')
+        // Ambil user berdasarkan username
+        $user = $userModel->where('username', $username)->first();
+
+        if (!$user) {
+            return redirect()->to('/login')->withInput()->with('error', 'Username atau password salah.')
                 ->with('form_mode', 'login');
         }
 
-        $user = $userModel
-            ->where('username', $username)
-            ->where('role', $role)
-            ->first();
-
-        if ($user && password_verify($password, $user['password'])) {
-            $session->set([
-                'user_id' => $user['id'],
-                'username' => $user['username'],
-                'role' => $user['role'],
-                'isLoggedIn' => true,
-            ]);
-            return redirect()->to('/');
+        // Verifikasi password hash
+        if (!password_verify($password, $user['password'])) {
+            return redirect()->to('/login')->withInput()->with('error', 'Username atau password salah.')
+                ->with('form_mode', 'login');
         }
 
-        return redirect()->to('/auth')->withInput()->with('error', 'Username, password, atau role salah.')
-            ->with('form_mode', 'login');
+        // Simpan session login
+        $session->set([
+            'user_id' => $user['id'],
+            'username' => $user['username'],
+            'role' => $user['role'],
+            'isLoggedIn' => true,
+        ]);
+
+        return redirect()->to('/');
     }
 
     public function registerPost()
     {
         $userModel = new UserModel();
 
-        $username = $this->request->getPost('username');
+        $username = trim($this->request->getPost('username'));
         $password = $this->request->getPost('password');
-        $role = $this->request->getPost('role');
 
-        if (!$username || !$password || !in_array($role, ['penjual', 'pembeli'])) {
-            return redirect()->to('/auth')->withInput()->with('error', 'Data tidak valid.')
+        // Validasi awal
+        if (!$username || !$password) {
+            return redirect()->to('/auth')->withInput()->with('error', 'Semua field harus diisi.')
                 ->with('form_mode', 'register');
         }
 
+        // Cek jika username sudah ada
         if ($userModel->where('username', $username)->first()) {
             return redirect()->to('/auth')->withInput()->with('error', 'Username sudah terdaftar.')
                 ->with('form_mode', 'register');
         }
 
+        // Hash password sebelum simpan
+        $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+
         $userModel->save([
             'username' => $username,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
-            'role' => $role,
+            'password' => $hashPassword,
+            'role' => 'user',
         ]);
 
         return redirect()->to('/auth')->with('success', 'Registrasi berhasil. Silakan login.');
@@ -77,4 +81,3 @@ class Auth extends BaseController
         return redirect()->to('/');
     }
 }
-

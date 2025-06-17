@@ -6,41 +6,50 @@ use CodeIgniter\Model;
 
 class ProductModel extends Model
 {
-    protected $table            = 'products';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'title', 'description', 'photo', 'price', 'condition', 'status'];
-
-    protected bool $allowEmptyInserts = false;
-    protected bool $updateOnlyChanged = true;
-
-    protected array $casts = [];
-    protected array $castHandlers = [];
-
-    // Dates
+    protected $table = 'products';
+    protected $primaryKey = 'id';
+    protected $allowedFields = [
+        'user_id',
+        'title',
+        'description',
+        'photo',
+        'price',
+        'product_condition',
+        'status',
+        'category_id'
+    ];
     protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+    /**
+     * Ambil semua produk dengan username penjual
+     */
+    public function getAllWithSeller()
+    {
+        return $this->select('products.*, users.username as seller_username')
+            ->join('users', 'users.id = products.user_id')
+            ->orderBy('products.created_at', 'DESC')
+            ->findAll();
+    }
 
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    /**
+     * Ambil semua produk beserta nama kategori
+     */
+    public function getAllWithCategory()
+    {
+        return $this->select('products.*, categories.name as category_name')
+            ->join('categories', 'categories.id = products.category_id', 'left')
+            ->orderBy('products.created_at', 'DESC')
+            ->findAll();
+    }
+
+    /**
+     * Ambil satu produk berdasarkan ID dengan nama kategori
+     */
+    public function getByIdWithCategory($id)
+    {
+        return $this->select('products.*, categories.name as category_name')
+            ->join('categories', 'categories.id = products.category_id', 'left')
+            ->where('products.id', $id)
+            ->first();
+    }
 }
